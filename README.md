@@ -1,3 +1,3 @@
 # habit-tracker
-*Incomplete*\n
+!Incomplete!
 Program for tracking your completion of habits
