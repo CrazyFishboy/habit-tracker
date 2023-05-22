@@ -35,7 +35,7 @@ date getCurrentDate(){
 }
 
 void displayDate(date dateToDisplay){
-    std::cout << "Today is " << months[dateToDisplay.month - 1] << " " << dateToDisplay.day << " " << dateToDisplay.year << std::endl;
+    std::cout << "Today is " << convertToTitle(months[dateToDisplay.month -1]) << " " << dateToDisplay.day << " " << dateToDisplay.year << std::endl;
 }
 
 void displayDate(date dateToDisplay, std::string format){
@@ -52,7 +52,7 @@ void displayDate(date dateToDisplay, std::string format){
                     output += std::to_string(dateToDisplay.month);
                     ++i;
                 } else if(format[i+1] == 'M'){
-                    output += months[dateToDisplay.month -1];
+                    output += convertToTitle(months[dateToDisplay.month -1]);
                     ++i;
                 } else if(format[i+1] == 'y'){
                     output += std::to_string(dateToDisplay.year);
