@@ -14,6 +14,7 @@
 #include <ctime>
 #include <string>
 #include <iostream>
+#include <cmath>
 #include "constants.h"
 
 
@@ -24,5 +25,7 @@ void displayDate(date dateToDisplay, std::string format);
 std::string convertToLowerCase(std::string input);
 std::string convertToUpperCase(std::string input);
 std::string convertToTitle(std::string input);
+std::string getDayOfWeek(int day, int month, int year);
+std::string getDayOfWeek(date dateInQuestion);
 
 #endif
