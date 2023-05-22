@@ -21,4 +21,8 @@ date getCurrentDate();
 void displayDate(date dateToDisplay);
 void displayDate(date dateToDisplay, std::string format);
 
+std::string convertToLowerCase(std::string input);
+std::string convertToUpperCase(std::string input);
+std::string convertToTitle(std::string input);
+
 #endif

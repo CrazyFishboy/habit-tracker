@@ -63,3 +63,50 @@ void displayDate(date dateToDisplay, std::string format){
     }
     std::cout << output << std::endl;
 }
+
+
+std::string convertToLowerCase(std::string input){
+    std::string output = "";
+    for(long unsigned i = 0; i < input.length(); ++i){
+        if(input[i] >= 'A' && input[i] <= 'Z'){
+            output += (input[i] - 'A') + 'a';
+        } else {
+            output += input[i];
+        }
+    }
+    return output;
+}
+
+
+std::string convertToUpperCase(std::string input){
+    std::string output = "";
+    for(long unsigned i = 0; i < input.length(); ++i){
+        if(input[i] >= 'a' && input[i] <= 'z'){
+            output += (input[i] - 'a') + 'A';
+        } else {
+            output += input[i];
+        }
+    }
+    return output;
+}
+
+
+std::string convertToTitle(std::string input){
+    std::string output = "";
+    for(long unsigned i = 0; i < input.length(); ++i){
+        if(i == 0 || input[i -1] == ' '){
+            if(input[i] >= 'a' && input[i] <= 'z'){
+                output += (input[i] - 'a') + 'A';
+            } else {
+                output += input[i];
+            }
+        } else {
+            if(input[i] >= 'A' && input[i] <= 'Z'){
+                output += (input[i] - 'A') + 'a';
+            } else {
+                output += input[i];
+            }
+        }
+    }
+    return output;
+}
