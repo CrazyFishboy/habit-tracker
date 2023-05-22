@@ -1,3 +1,2 @@
 # habit-tracker
-!Incomplete!
-Program for tracking your completion of habits
+Incomplete. Program for tracking your completion of habits
