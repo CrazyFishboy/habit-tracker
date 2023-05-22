@@ -33,3 +33,33 @@ date getCurrentDate(){
     date dateToday(ltm->tm_mday, 1 + ltm->tm_mon, 1900 + ltm->tm_year);
     return dateToday;
 }
+
+void displayDate(date dateToDisplay){
+    std::cout << "Today is " << months[dateToDisplay.month - 1] << " " << dateToDisplay.day << " " << dateToDisplay.year << std::endl;
+}
+
+void displayDate(date dateToDisplay, std::string format){
+    std::string output = "";
+    for(long unsigned i = 0; i < format.length(); ++i){
+        if(format[i] != '%'){
+            output += format[i];
+        } else {
+            if(i + 1 < format.length()){
+                if(format[i+1] == 'd'){
+                    output += std::to_string(dateToDisplay.day);
+                    ++i;
+                } else if(format[i+1] == 'm'){
+                    output += std::to_string(dateToDisplay.month);
+                    ++i;
+                } else if(format[i+1] == 'M'){
+                    output += months[dateToDisplay.month -1];
+                    ++i;
+                } else if(format[i+1] == 'y'){
+                    output += std::to_string(dateToDisplay.year);
+                    ++i;
+                }
+            }
+        }
+    }
+    std::cout << output << std::endl;
+}

@@ -13,10 +13,12 @@
 
 #include <ctime>
 #include <string>
+#include <iostream>
 #include "constants.h"
 
 
 date getCurrentDate();
-
+void displayDate(date dateToDisplay);
+void displayDate(date dateToDisplay, std::string format);
 
 #endif
