@@ -20,7 +20,8 @@
 int main(){
     
     date today = getCurrentDate();
-    std::cout << "Today is " << months[today.month - 1] << " " << today.day << " " << today.year << std::endl;
+    displayDate(today);
+    displayDate(today,"%M %d %y is today's date");
 
 
     Calendar language(today,"Spanish");
