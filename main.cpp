@@ -21,8 +21,7 @@ int main(){
     
     date today = getCurrentDate();
     displayDate(today);
-    displayDate(today,"%M %d %y is today's date");
-
+    displayDate(today,"%M %d %y. Today is a %D");
 
     Calendar language(today,"Spanish");
     language.display();
