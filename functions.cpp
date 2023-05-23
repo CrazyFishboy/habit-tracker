@@ -149,16 +149,20 @@ std::string getDayOfWeek(date dateInQuestion){
     return weekday[w];
 }
 
+
+bool isLeapYear(unsigned year){
+    return (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0));
+}
+
+
 int numDaysIntoYear(date startDate){
     int totalDays = startDate.day;
     for(int i = startDate.month - 1; i > 0; --i){
         totalDays += daysInMonth[i-1];
     }
-    if(startDate.year % 4 == 0){
-        if(startDate.year % 400 == 0 || startDate.year % 100 != 0){
-            if(startDate.month > 2){
-                totalDays++;
-            }
+    if(isLeapYear(startDate.year)){
+        if(startDate.month > 2){
+            totalDays++;
         }
     }
     return totalDays;
@@ -167,10 +171,7 @@ int numDaysIntoYear(date startDate){
 date daysIntoYearToDate(unsigned daysIntoYear, unsigned year){
     date outputDate;
     outputDate.year = year;
-    bool leapYear = false;
-    if(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
-        leapYear = true;
-    }
+    bool leapYear = isLeapYear(year);
     unsigned month = 1;
     if(leapYear){
         while(daysIntoYear > daysInMonthLY[month-1]){

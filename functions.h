@@ -27,6 +27,7 @@ std::string convertToUpperCase(std::string input);
 std::string convertToTitle(std::string input);
 std::string getDayOfWeek(int day, int month, int year);
 std::string getDayOfWeek(date dateInQuestion);
+bool isLeapYear(unsigned year);
 int numDaysIntoYear(date startDate);
 date daysIntoYearToDate(unsigned daysIntoYear, unsigned year);
 date getDateXDaysFromDate(date startDate, int numDays);
