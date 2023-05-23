@@ -12,6 +12,11 @@
 #include "functions.h"
 
 
+/**
+ * @brief Finds the current date and returns it in the form of a date structure
+ * 
+ * @return date, the date in the form of the date structure
+ */
 date getCurrentDate(){
     /*
     // print various components of tm structure.
@@ -26,38 +31,59 @@ date getCurrentDate(){
     std::cout << ltm->tm_sec << std::endl;
     */
 
-    // current date/time based on current system
+    // Gets the time and date
     time_t now = time(0);
     tm *ltm = localtime(&now);
+
     // Creates date object
     date dateToday(ltm->tm_mday, 1 + ltm->tm_mon, 1900 + ltm->tm_year);
     return dateToday;
 }
 
+
+/**
+ * @brief Displays the date in the form of 'Today is <month> <day> <year>'
+ * 
+ * @param dateToDisplay, a date structure object
+ */
 void displayDate(date dateToDisplay){
-    std::cout << "Today is " << convertToTitle(months[dateToDisplay.month -1]) << " " << dateToDisplay.day << " " << dateToDisplay.year << std::endl;
+    std::cout << "Today is " << convertToTitle(months[dateToDisplay.month -1]) 
+        << " " << dateToDisplay.day << " " << dateToDisplay.year << std::endl;
 }
 
+
+/**
+ * @brief Displays the date in a customizable way
+ * 
+ * @param dateToDisplay, a date structure object containing the date
+ * @param format, the string of text to display. The '%' character can be used followed by another key character
+ * to insert data into the string. Key characters are:
+ *      %d inserts the day in numerical form ex: 12
+ *      %D inserts the day of the week ex: Tuesday
+ *      %m inserts the month in numerical form ex: 4
+ *      %M inserts the name of the month ex: August
+ *      %y inserts the year in numerical form ex: 2013
+ */
 void displayDate(date dateToDisplay, std::string format){
     std::string output = "";
     for(long unsigned i = 0; i < format.length(); ++i){
-        if(format[i] != '%'){
+        if(format[i] != '%'){ // Will simply add the character to the output if the character is not '%'
             output += format[i];
         } else {
-            if(i + 1 < format.length()){
-                if(format[i+1] == 'd'){
+            if(i + 1 < format.length()){ // Ensures that the '%' is not the last one in the string
+                if(format[i+1] == 'd'){ // Inserts day
                     output += std::to_string(dateToDisplay.day);
                     ++i;
-                } else if(format[i+1] == 'D'){
+                } else if(format[i+1] == 'D'){ // Inserts day of week
                     output += convertToTitle(getDayOfWeek(dateToDisplay));
                     ++i;
-                } else if(format[i+1] == 'm'){
+                } else if(format[i+1] == 'm'){ // Inserts month
                     output += std::to_string(dateToDisplay.month);
                     ++i;
-                } else if(format[i+1] == 'M'){
+                } else if(format[i+1] == 'M'){ // Inserts name of month
                     output += convertToTitle(months[dateToDisplay.month -1]);
                     ++i;
-                } else if(format[i+1] == 'y'){
+                } else if(format[i+1] == 'y'){ // Inserts year
                     output += std::to_string(dateToDisplay.year);
                     ++i;
                 }
@@ -68,11 +94,17 @@ void displayDate(date dateToDisplay, std::string format){
 }
 
 
+/**
+ * @brief Converts a string of text to all lowercase. Characters that are not uppercase will not be changed
+ * 
+ * @param input, the input string of text
+ * @return std::string, the output string of text with no uppercase caharacters.
+ */
 std::string convertToLowerCase(std::string input){
     std::string output = "";
     for(long unsigned i = 0; i < input.length(); ++i){
-        if(input[i] >= 'A' && input[i] <= 'Z'){
-            output += (input[i] - 'A') + 'a';
+        if(input[i] >= 'A' && input[i] <= 'Z'){ // Character is capital letter
+            output += (input[i] - 'A') + 'a'; // Converts to lowercase
         } else {
             output += input[i];
         }
