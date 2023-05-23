@@ -28,6 +28,7 @@ std::string convertToTitle(std::string input);
 std::string getDayOfWeek(int day, int month, int year);
 std::string getDayOfWeek(date dateInQuestion);
 int numDaysIntoYear(date startDate);
+date daysIntoYearToDate(unsigned daysIntoYear, unsigned year);
 date getDateXDaysFromDate(date startDate, int numDays);
 
 #endif

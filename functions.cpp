@@ -164,6 +164,32 @@ int numDaysIntoYear(date startDate){
     return totalDays;
 }
 
+date daysIntoYearToDate(unsigned daysIntoYear, unsigned year){
+    date outputDate;
+    outputDate.year = year;
+    bool leapYear = false;
+    if(year % 400 == 0 || (year % 4 == 0 && year % 100 != 0)){
+        leapYear = true;
+    }
+    unsigned month = 1;
+    if(leapYear){
+        while(daysIntoYear > daysInMonthLY[month-1]){
+            daysIntoYear -= daysInMonthLY[month-1];
+            month++;
+        }
+        outputDate.day = daysIntoYear;
+        outputDate.month = month;
+    } else {
+        while(daysIntoYear > daysInMonth[month-1]){
+            daysIntoYear -= daysInMonth[month-1];
+            month++;
+        }
+        outputDate.day = daysIntoYear;
+        outputDate.month = month;
+    }
+    return outputDate;
+}
+
 date getDateXDaysFromDate(date startDate, int numDays){
     date endDate = startDate;
     return endDate;
