@@ -30,6 +30,6 @@ struct date {
 };
 
 const std::string months[12] = {"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
-const int daysInMonths[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+const int daysInMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 #endif
