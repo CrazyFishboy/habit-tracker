@@ -23,8 +23,17 @@ int main(){
     displayDate(today);
     displayDate(today,"%M %d %y. Today is a %D");
 
+    std::cout << "-------------------------\n";
+
+    date day(29,2,2000);
+    displayDate(day);
+    int days = numDaysIntoYear(day);
+    std::cout << "Days into year: " << std::to_string(days) << std::endl;
+    day = daysIntoYearToDate(days,2000);
+    displayDate(day);
+
     Calendar language(today,"Spanish");
-    language.display();
+    language.displayInfo();
 
 
     return 0;
