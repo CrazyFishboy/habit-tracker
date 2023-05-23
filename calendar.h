@@ -35,9 +35,12 @@ public:
         name = calendarName;
     }
 
-    void display(){
-        std::cout << "Calendar " << name << " was created on " << months[creationDate.month - 1] << " " << creationDate.day << " " << creationDate.year << std::endl;
+    void displayInfo(){
+        std::cout << "Calendar " << name << " was created on " << months[creationDate.month - 1] 
+        << " " << creationDate.day << " " << creationDate.year << std::endl;
     }
+
+    void displayMonthSoFar();
 
 
 private:

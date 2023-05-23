@@ -11,3 +11,8 @@
 
 
 #include "calendar.h"
+
+
+void Calendar::displayMonthSoFar(){
+;
+}
