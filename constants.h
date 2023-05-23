@@ -30,6 +30,7 @@ struct date {
 };
 
 const std::string months[12] = {"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
-const int daysInMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+const unsigned daysInMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
+const unsigned daysInMonthLY[12] = {31,29,31,30,31,30,31,31,30,31,30,31}; // Leap Year
 
 #endif
