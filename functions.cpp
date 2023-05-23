@@ -148,3 +148,23 @@ std::string getDayOfWeek(date dateInQuestion){
     w = w % 7;
     return weekday[w];
 }
+
+int numDaysIntoYear(date startDate){
+    int totalDays = startDate.day;
+    for(int i = startDate.month - 1; i > 0; --i){
+        totalDays += daysInMonth[i-1];
+    }
+    if(startDate.year % 4 == 0){
+        if(startDate.year % 400 == 0 || startDate.year % 100 != 0){
+            if(startDate.month > 2){
+                totalDays++;
+            }
+        }
+    }
+    return totalDays;
+}
+
+date getDateXDaysFromDate(date startDate, int numDays){
+    date endDate = startDate;
+    return endDate;
+}
