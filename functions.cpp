@@ -113,11 +113,17 @@ std::string convertToLowerCase(std::string input){
 }
 
 
+/**
+ * @brief Converts a string of text to all uppercase. Characters that are not lowercase will not be changed
+ * 
+ * @param input, the input string of text
+ * @return std::string, the output string of text with no lowercase caharacters.
+ */
 std::string convertToUpperCase(std::string input){
     std::string output = "";
     for(long unsigned i = 0; i < input.length(); ++i){
-        if(input[i] >= 'a' && input[i] <= 'z'){
-            output += (input[i] - 'a') + 'A';
+        if(input[i] >= 'a' && input[i] <= 'z'){ // Character is lowercase letter
+            output += (input[i] - 'a') + 'A'; // Converts to uppercase
         } else {
             output += input[i];
         }
@@ -126,18 +132,24 @@ std::string convertToUpperCase(std::string input){
 }
 
 
+/**
+ * @brief Converts a string of text to a title form. This means that only the first letter of each word is capitalized
+ * 
+ * @param input, the input string of text
+ * @return std::string, the output string of text in title form
+ */
 std::string convertToTitle(std::string input){
     std::string output = "";
     for(long unsigned i = 0; i < input.length(); ++i){
-        if(i == 0 || input[i -1] == ' '){
-            if(input[i] >= 'a' && input[i] <= 'z'){
-                output += (input[i] - 'a') + 'A';
+        if(i == 0 || input[i -1] == ' '){ // If the character is the first in the string or is preceeded by a space
+            if(input[i] >= 'a' && input[i] <= 'z'){ // If lowercase
+                output += (input[i] - 'a') + 'A'; // Make uppercase
             } else {
-                output += input[i];
+                output += input[i]; // If the character is uppercase or is not a letter
             }
         } else {
-            if(input[i] >= 'A' && input[i] <= 'Z'){
-                output += (input[i] - 'A') + 'a';
+            if(input[i] >= 'A' && input[i] <= 'Z'){ // If uppercase
+                output += (input[i] - 'A') + 'a'; // Make lowercase
             } else {
                 output += input[i];
             }
@@ -147,7 +159,14 @@ std::string convertToTitle(std::string input){
 }
 
 
-// Uses Zeller's Algorithm
+/**
+ * @brief Finds the day of the week given a date. Uses Zeller's Algorithm
+ * 
+ * @param day, the day of the date (1-31)
+ * @param month, the month of the date (1-12)
+ * @param year, the year of the date (1000-9999)
+ * @return std::string, the day of the week returned as a string
+ */
 std::string getDayOfWeek(int day, int month, int year){
     const std::string weekday[7] = {"Saturday","Sunday","Monday","Tuesday", "Wednesday","Thursday","Friday"};
     int mon;
@@ -164,7 +183,12 @@ std::string getDayOfWeek(int day, int month, int year){
     return weekday[w];
 }
 
-// Uses Zeller's Algorithm
+/**
+ * @brief Finds the day of the week given a date. Uses Zeller's Algorithm
+ * 
+ * @param dateInQuestion, the date stored in a date structure
+ * @return std::string, the day of the week returned as a string
+ */
 std::string getDayOfWeek(date dateInQuestion){
     const std::string weekday[7] = {"Saturday","Sunday","Monday","Tuesday", "Wednesday","Thursday","Friday"};
     int mon;
@@ -182,6 +206,15 @@ std::string getDayOfWeek(date dateInQuestion){
 }
 
 
+/**
+ * @brief Determines whether a given year is a leap year. Leap years occur whenever a 
+ * year is divisible by 4, except on years divisible by 100. Years divisible by 400 are an
+ * exception to the divisible by 100 exception
+ * 
+ * @param year, the year in question
+ * @return true, the year is a leap year
+ * @return false, the year is not a leap year
+ */
 bool isLeapYear(unsigned year){
     return (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0));
 }
